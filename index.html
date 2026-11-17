@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Analyze the sentiment of a text with an AI model running in your browser."
+    />
+    <meta name="theme-color" content="#f5f7fb" />
+    <title>Sentiment Analysis</title>
+  </head>
+  <body>
+    <main class="app">
+      <header class="intro">
+        <p class="eyebrow">PRIVATE, IN-BROWSER ANALYSIS</p>
+        <h1>Understand the feeling behind the words.</h1>
+        <p class="description">
+          Enter a message to see whether its sentiment is positive or negative.
+          Your text is analyzed on this device and is not sent to a server.
+        </p>
+      </header>
+
+      <section class="panel" aria-labelledby="analyzer-heading">
+        <h2 id="analyzer-heading">Analyze a text</h2>
+        <form id="sentiment-form">
+          <label for="text-input">Your text</label>
+          <textarea
+            id="text-input"
+            name="text"
+            rows="6"
+            maxlength="5000"
+            placeholder="For example: I had a wonderful time and can't wait to do it again."
+            required
+          ></textarea>
+          <div class="form-footer">
+            <span id="character-count">0 / 5000</span>
+            <button id="analyze-button" type="submit">Analyze sentiment</button>
+          </div>
+        </form>
+
+        <p id="status" class="status" role="status" aria-live="polite">
+          The model downloads the first time you analyze a text.
+        </p>
+
+        <div id="result" class="result" hidden aria-live="polite">
+          <p class="result-label">PREDICTION</p>
+          <p id="prediction" class="prediction"></p>
+          <p id="confidence" class="confidence"></p>
+        </div>
+      </section>
+
+      <footer>
+        Powered by a pretrained DistilBERT sentiment model. Model files are
+        downloaded from Hugging Face and cached by your browser.
+      </footer>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
